@@ -1,15 +1,17 @@
 """
 main.py
 
-Early Version:
-- Open webcam
-- Display the live video feed
-- Quit when user presses 'q'
+Early Version (1.1):
+- Open webcam   (1.0)
+- Display the live video feed   (1.0)
+- Detect hands and draw landmarks using HandTracker (1.1)
+- Quit when user presses 'q'    (1.1)
 
 Last Updated: April 28, 2025
 """
 
 import cv2 as cv  # OpenCV is used to access and manipulate the webcam feed
+from hand_tracker import HandTracker  # Import HandTracker class
 
 def main():
     """
@@ -25,6 +27,9 @@ def main():
     
     print("[SUCCESS] Webcam has successfully turned on! Press 'q' to exit.")
     
+    # Initializing our HandTracker
+    tracker = HandTracker()
+    
     # ==========================
     # Main loop that will continuously capture frames from webcam.
     while True:
@@ -34,6 +39,8 @@ def main():
         if not ret:
             print("[ERROR] Could not grab the frame.")
             break
+        
+        frame, _ = tracker.find_hands(frame)
         
         cv.imshow('Vision Cursor', frame)   # Display the captured frame in a window.
         
