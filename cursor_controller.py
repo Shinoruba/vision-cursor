@@ -1,51 +1,58 @@
 """
 cursor_controller.py
 
-Early Version (1.1):
-- This module handles cursor movement using the tracked position of the index fingertip.    (1.1)
+Early Version (1.2):
+- This module handles cursor movement using the tracked position of the right hand's index fingertip.    (1.2)
 - It extracts landmark coordinates from MediaPipe results and maps them to the screen size
   to control the system mouse cursor using pyautogui.   (1.1)
   
-Last Updated: April 28, 2025
+Last Updated: April 30, 2025
 """
 
 import pyautogui  # For controlling the system's mouse cursor
-import cv2 as cv  # Needed for frame size
+import cv2 as cv  # Will I needed this for frame size(?)
 import numpy as np  # For scaling and coordinate mapping
 
 screen_width, screen_height = pyautogui.size()  # Get screen size to use as target mapping space
 
-
-def move_cursor_from_landmarks(results, frame_shape, hand_index=0):
+def move_cursor_from_landmarks(results, frame_shape):
     """
-    Detects index fingertip landmark from MediaPipe results and moves the system cursor.
+    Detects the index fingertip of the user's right hand (interpreted as "Left" by MediaPipe) 
+    and moves the system cursor accordingly.
 
     Args:
-        results: MediaPipe hand detection results.
-        frame_shape: Tuple (height, width) of the captured webcam frame.
-        hand_index (int): Which hand to use if multiple hands are detected. Default is 0 (first hand).
+        results: MediaPipe hand detection results (contains landmarks and handedness).
+        frame_shape: Tuple (height, width) of the webcam frame.
+
+    Returns:
+        (x_px, y_px): Pixel coordinates of the fingertip for visualization, or None if right hand not found.
     """
+    frame_height, frame_width = frame_shape
 
-    frame_height, frame_width = frame_shape # Extract dimensions of the webcam frame
+    if results.multi_hand_landmarks and results.multi_handedness:
+        for idx, hand_info in enumerate(results.multi_handedness):
+            hand_label = hand_info.classification[0].label  # "Left" or "Right"
 
-    if results.multi_hand_landmarks:
-        # Only proceed if the expected hand index exists
-        if hand_index < len(results.multi_hand_landmarks):
-            hand_landmarks = results.multi_hand_landmarks[hand_index]   # Get the selected hand's landmarks
-            index_tip = hand_landmarks.landmark[8]  # Landmark index 8 corresponds to the tip of the index finger
+            # Reverse logic: "Left" label means user's right hand (due to camera mirror view)
+            if hand_label == "Left":
+                hand_landmarks = results.multi_hand_landmarks[idx]
 
-            # Get normalized coordinates (range 0 to 1) and scale to frame size
-            x_px = int(index_tip.x * frame_width)
-            y_px = int(index_tip.y * frame_height)
+                # Index finger tip is landmark #8
+                index_tip = hand_landmarks.landmark[8]
 
-            # Map webcam coordinates to screen coordinates
-            screen_x = np.interp(x_px, [0, frame_width], [0, screen_width])
-            screen_y = np.interp(y_px, [0, frame_height], [0, screen_height])
+                # Convert normalized landmark to pixel coordinates
+                x_px = int(index_tip.x * frame_width)
+                y_px = int(index_tip.y * frame_height)
 
-            
-            pyautogui.moveTo(screen_x, screen_y)    # Move the mouse cursor
+                # Flip x-axis for screen coordinate mapping only
+                flipped_x = frame_width - x_px
 
-            # OPTIONAL: Draw a circle on the frame for feedback (This should be drawn in main.py ngl)
-            return (x_px, y_px)  # Return pixel location on frame for feedback
+                # Map to screen space
+                screen_x = np.interp(flipped_x, [0, frame_width], [0, screen_width])
+                screen_y = np.interp(y_px, [0, frame_height], [0, screen_height])
 
-    return None  # No hand detected or index out of range
+                pyautogui.moveTo(screen_x, screen_y)
+
+                return (x_px, y_px)  # Use original X for drawing the green circle
+
+    return None  # No matching hand detected
