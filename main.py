@@ -6,7 +6,8 @@ Early Version (1.2):
 - Display the live video feed   (1.0)
 - Detect hands and draw landmarks using HandTracker (1.1)
 - Track index fingertip to move system mouse cursor (1.2)
-- Show a small circle at the fingertip location for user feedback   (1.2)
+- Recognize pinch/spread gestures using left hand to control system volume (1.3)
+- Show some small visual markers on screen  (1.3)
 - Quit when user presses 'q'    (1.1)
 
 Last Updated: April 30, 2025
@@ -15,10 +16,12 @@ Last Updated: April 30, 2025
 import cv2 as cv  # OpenCV is used to access and manipulate the webcam feed
 from hand_tracker import HandTracker  # Import HandTracker class
 from cursor_controller import move_cursor_from_landmarks  # Mouse control based on finger position
+from gesture_controller import control_volume_from_gestures  # Volume control using left-hand gestures
 
 def main():
     """
     The Main File ( haha get it? main.py? ok .. ) will initialize webcam feed and display it in a new window.
+    It will also run both cursor tracking and gesture control logic.
     """
     
     cap = cv.VideoCapture(0)   # Initialize the webcam, the device is usually denoted as '0'.
@@ -51,6 +54,12 @@ def main():
         if fingertip_pos:
             x_px, y_px = fingertip_pos
             cv.circle(frame, (x_px, y_px), 10, (0, 255, 0), cv.FILLED)  # Draw a green filled circle
+            
+        # This will handle the left hand = gesture detection for volume control
+        gesture_line = control_volume_from_gestures(results, frame.shape[:2])
+        if gesture_line:
+            x1, y1, x2, y2 = gesture_line
+            cv.line(frame, (x1, y1), (x2, y2), (0, 0, 255), 4)  # This will draw red line between thumb & index
         
         cv.imshow('Vision Cursor', frame)   # Display the captured frame in a window.
         

@@ -53,20 +53,23 @@ These libraries together enable real-time, accurate, and resource-light performa
 
 ## 📁 Project Structure
 vision-cursor/
-- ├── main.py
-- ├── hand_tracker.py
-- ├── cursor_controller.py
-- ├── gesture_recognizer.py // Not Started
-- ├── mouse_controller.py   // Not Started
-- ├── utils.py  // Not Started
-- ├── requirements.txt  // To-Do at the end
-- └── README.md
+- ├── main.py                     # Main application entrypoint
+- ├── hand_tracker.py             # Hand detection and landmark extraction using MediaPipe
+- ├── cursor_controller.py        # Uses right index fingertip to control system cursor
+- ├── gesture_controller.py       # Detects gestures using the left hand (e.g., volume control)
+- ├── gesture_recognizer.py       # (To be implemented) Classifies gestures like click, scroll, etc.
+- ├── mouse_controller.py         # (To be implemented) Maps gestures to system mouse/keyboard actions
+- ├── utils.py                    # Utility functions (e.g., distance calculations)
+- ├── requirements.txt            # (To be implemented at the end) Lists all required Python libraries
+- └── README.md                   # You’re reading it right now silly! 😋
 
 ### 🗂️ Description of Each File
-- `main.py`: The entry point of the application. Initializes the camera feed, loads the hand tracking and gesture recognition modules, and coordinates cursor movement.
+- `main.py`: 	The entry point of the application. Initializes the camera, loads modules, tracks cursor with the right index fingertip, and detects volume gestures with the left hand.
 - `hand_tracker.py`: Handles all functionality related to detecting and tracking hands and fingers using MediaPipe.
-- `gesture_recognizer.py`: Contains logic to interpret different hand gestures.
-- `mouse_controller.py`: Maps recognized gestures to real mouse events using PyAutoGUI or pynput.
+- `cursor_controller.py`: Maps the right hand’s index finger movement to system cursor position using PyAutoGUI.
+- `gesture_controller.py`: Detects pinch/spread gestures from the left hand to trigger system volume adjustments.
+- `gesture_recognizer.py`: *(Planned)* Contains logic to interpret different hand gestures.
+- `mouse_controller.py`: *(Planned)* *Maps recognized gestures to real mouse events using PyAutoGUI or pynput.
 - `utils.py`: A utility file with helper functions (e.g., calculating distances between fingers, smoothing cursor motion).
 - `requirements.txt`: Lists all required Python libraries for easy environment setup.
 - `README.md`: You’re reading it right now silly! 😋

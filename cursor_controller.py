@@ -37,15 +37,13 @@ def move_cursor_from_landmarks(results, frame_shape):
             if hand_label == "Left":
                 hand_landmarks = results.multi_hand_landmarks[idx]
 
-                # Index finger tip is landmark #8
-                index_tip = hand_landmarks.landmark[8]
+                index_tip = hand_landmarks.landmark[8]  # Index finger tip is landmark #8
 
                 # Convert normalized landmark to pixel coordinates
                 x_px = int(index_tip.x * frame_width)
                 y_px = int(index_tip.y * frame_height)
 
-                # Flip x-axis for screen coordinate mapping only
-                flipped_x = frame_width - x_px
+                flipped_x = frame_width - x_px  # Flip x-axis for screen coordinate mapping only
 
                 # Map to screen space
                 screen_x = np.interp(flipped_x, [0, frame_width], [0, screen_width])
