@@ -53,15 +53,15 @@ These libraries together enable real-time, accurate, and resource-light performa
 
 ## 📁 Project Structure
 vision-cursor/
-- ├── main.py                     # Main application entrypoint
-- ├── hand_tracker.py             # Hand detection and landmark extraction using MediaPipe
-- ├── cursor_controller.py        # Uses right index fingertip to control system cursor
-- ├── gesture_controller.py       # Uses left-hand pinch/spread gestures to change system volume.
-- ├── gesture_recognizer.py       # Classifies left-hand gestures like left/right click, double-click, scroll up/down.
-- ├── mouse_controller.py         # Executes real mouse actions like clicking and scrolling using pyautogui.
-- ├── utils.py                    # Utility file for helper functions like distance calculations and gesture checks.
-- ├── requirements.txt            # Ensures all dependencies are installed in one command.
-- └── README.md                   # You’re reading it right now silly! 😋
+- ├── `main.py`                     : Main application entrypoint
+- ├── `hand_tracker.py`             : Hand detection and landmark extraction using MediaPipe
+- ├── `cursor_controller.py`        : Uses right index fingertip to control system cursor
+- ├── `gesture_controller.py`       : Uses left-hand pinch/spread gestures to change system volume.
+- ├── `gesture_recognizer.py`       : Classifies left-hand gestures like left/right click, double-click, scroll up/down.
+- ├── `mouse_controller.py`         : Executes real mouse actions like clicking and scrolling using pyautogui.
+- ├── `utils.py`                    : Utility file for helper functions like distance calculations and gesture checks.
+- ├── `requirements.txt`            : Ensures all dependencies are installed in one command.
+- └── `README.md`                   : You’re reading it right now silly! 😋
 
 ### 🗂️ Description of Each File
 - `main.py`: 	The entry point of the application. Initializes the camera, loads modules, tracks cursor with the right index fingertip, and detects volume gestures with the left hand.
