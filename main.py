@@ -20,6 +20,7 @@ from hand_tracker import HandTracker  # Import HandTracker class
 from cursor_controller import move_cursor_from_landmarks  # Mouse control based on finger position
 from gesture_controller import control_volume_from_gestures  # Volume control using left-hand gestures
 from gesture_recognizer import GestureRecognizer  # NEW: Recognize right-hand gestures
+from mouse_controller import perform_mouse_action
 
 def main():
     """
@@ -74,6 +75,7 @@ def main():
         gesture = recognizer.recognize(results)
         if gesture:
             print(f"[GESTURE] Left-hand gesture detected: {gesture}")
+            perform_mouse_action(gesture)
         
         cv.imshow('Vision Cursor', frame)   # Display the captured frame in a window.
         
