@@ -1,22 +1,24 @@
 """
 main.py
 
-Early Version (1.2):
+Early Version (1.4):
 - Open webcam   (1.0)
 - Display the live video feed   (1.0)
 - Detect hands and draw landmarks using HandTracker (1.1)
 - Track index fingertip to move system mouse cursor (1.2)
 - Recognize pinch/spread gestures using left hand to control system volume (1.3)
+- Recognize right-hand gestures (click, scroll) using GestureRecognizer (1.4)
 - Show some small visual markers on screen  (1.3)
 - Quit when user presses 'q'    (1.1)
 
-Last Updated: April 30, 2025
+Last Updated: May 2, 2025
 """
 
 import cv2 as cv  # OpenCV is used to access and manipulate the webcam feed
 from hand_tracker import HandTracker  # Import HandTracker class
 from cursor_controller import move_cursor_from_landmarks  # Mouse control based on finger position
 from gesture_controller import control_volume_from_gestures  # Volume control using left-hand gestures
+from gesture_recognizer import GestureRecognizer  # NEW: Recognize right-hand gestures
 
 def main():
     """
@@ -35,6 +37,7 @@ def main():
     
     # Initializing our HandTracker
     tracker = HandTracker()
+    recognizer = GestureRecognizer()  # NEW: Right-hand gesture recognizer
     
     # ==========================
     # Main loop that will continuously capture frames from webcam.
@@ -60,6 +63,11 @@ def main():
         if gesture_line:
             x1, y1, x2, y2 = gesture_line
             cv.line(frame, (x1, y1), (x2, y2), (0, 0, 255), 4)  # This will draw red line between thumb & index
+            
+        # NEW: Detect right-hand gesture and print it
+        gesture = recognizer.recognize(results)
+        if gesture:
+            print(f"[GESTURE] Right-hand gesture detected: {gesture}")
         
         cv.imshow('Vision Cursor', frame)   # Display the captured frame in a window.
         
