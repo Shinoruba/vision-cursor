@@ -56,11 +56,11 @@ vision-cursor/
 - ├── main.py                     # Main application entrypoint
 - ├── hand_tracker.py             # Hand detection and landmark extraction using MediaPipe
 - ├── cursor_controller.py        # Uses right index fingertip to control system cursor
-- ├── gesture_controller.py       # Detects gestures using the left hand (e.g., volume control)
-- ├── gesture_recognizer.py       # Classifies left-hand gestures like click, scroll, etc.
-- ├── mouse_controller.py         # (To be implemented) Maps gestures to system mouse/keyboard actions
-- ├── utils.py                    # (To be implemented) Utility functions (e.g., distance calculation, filtering)
-- ├── requirements.txt            # (To be implemented at the end) Lists all required Python libraries
+- ├── gesture_controller.py       # Uses left-hand pinch/spread gestures to change system volume.
+- ├── gesture_recognizer.py       # Classifies left-hand gestures like left/right click, double-click, scroll up/down.
+- ├── mouse_controller.py         # Executes real mouse actions like clicking and scrolling using pyautogui.
+- ├── utils.py                    # Utility file for helper functions like distance calculations and gesture checks.
+- ├── requirements.txt            # Ensures all dependencies are installed in one command.
 - └── README.md                   # You’re reading it right now silly! 😋
 
 ### 🗂️ Description of Each File
@@ -89,7 +89,7 @@ Steps to Contribute:
 5. Open a Pull Request 📬
 
 ## 📜 License
-This project is licensed under the MIT License, see the LICENSE file for details.
+This project is licensed under the MIT License, go crazy with it 💀 and by that- I mean improve the codebase as you see fit.
 
 ## 👨‍💻 Author
 - Name: Yazan M. Homssi
