@@ -57,9 +57,9 @@ vision-cursor/
 - ├── hand_tracker.py             # Hand detection and landmark extraction using MediaPipe
 - ├── cursor_controller.py        # Uses right index fingertip to control system cursor
 - ├── gesture_controller.py       # Detects gestures using the left hand (e.g., volume control)
-- ├── gesture_recognizer.py       # (To be implemented) Classifies gestures like click, scroll, etc.
+- ├── gesture_recognizer.py       # Classifies left-hand gestures like click, scroll, etc.
 - ├── mouse_controller.py         # (To be implemented) Maps gestures to system mouse/keyboard actions
-- ├── utils.py                    # Utility functions (e.g., distance calculations)
+- ├── utils.py                    # (To be implemented) Utility functions (e.g., distance calculation, filtering)
 - ├── requirements.txt            # (To be implemented at the end) Lists all required Python libraries
 - └── README.md                   # You’re reading it right now silly! 😋
 
