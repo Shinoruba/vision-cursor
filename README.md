@@ -68,8 +68,8 @@ vision-cursor/
 - `hand_tracker.py`: Handles all functionality related to detecting and tracking hands and fingers using MediaPipe.
 - `cursor_controller.py`: Maps the right hand’s index finger movement to system cursor position using PyAutoGUI.
 - `gesture_controller.py`: Detects pinch/spread gestures from the left hand to trigger system volume adjustments.
-- `gesture_recognizer.py`: *(Planned)* Contains logic to interpret different hand gestures.
-- `mouse_controller.py`: *(Planned)* *Maps recognized gestures to real mouse events using PyAutoGUI or pynput.
+- `gesture_recognizer.py`: _(Planned)_ Contains logic to interpret different hand gestures.
+- `mouse_controller.py`: _(Planned)_ Maps recognized gestures to real mouse events using PyAutoGUI or pynput.
 - `utils.py`: A utility file with helper functions (e.g., calculating distances between fingers, smoothing cursor motion).
 - `requirements.txt`: Lists all required Python libraries for easy environment setup.
 - `README.md`: You’re reading it right now silly! 😋
@@ -89,7 +89,7 @@ Steps to Contribute:
 5. Open a Pull Request 📬
 
 ## 📜 License
-This project is licensed under the MIT License — see the LICENSE file for details.
+This project is licensed under the MIT License, see the LICENSE file for details.
 
 ## 👨‍💻 Author
 - Name: Yazan M. Homssi
