@@ -53,15 +53,15 @@ These libraries together enable real-time, accurate, and resource-light performa
 
 ## 📁 Project Structure
 vision-cursor/
-- ├── `main.py`                     : Main application entrypoint
-- ├── `hand_tracker.py`             : Hand detection and landmark extraction using MediaPipe
-- ├── `cursor_controller.py`        : Uses right index fingertip to control system cursor
-- ├── `gesture_controller.py`       : Detects gestures using the left hand (e.g., volume control)
-- ├── `gesture_recognizer.py`       : _(To be implemented)_ Classifies gestures like click, scroll, etc.
-- ├── `mouse_controller.py`         : _(To be implemented)_ Maps gestures to system mouse/keyboard actions
-- ├── `utils.py`                    : Utility functions (e.g., distance calculations)
-- ├── `requirements.txt`            : (To be implemented at the end) Lists all required Python libraries
-- └── `README.md`                   : You’re reading it right now silly! 😋
+- ├── main.py                     # Main application entrypoint
+- ├── hand_tracker.py             # Hand detection and landmark extraction using MediaPipe
+- ├── cursor_controller.py        # Uses right index fingertip to control system cursor
+- ├── gesture_controller.py       # Detects gestures using the left hand (e.g., volume control)
+- ├── gesture_recognizer.py       # Classifies left-hand gestures like click, scroll, etc.
+- ├── mouse_controller.py         # (To be implemented) Maps gestures to system mouse/keyboard actions
+- ├── utils.py                    # (To be implemented) Utility functions (e.g., distance calculation, filtering)
+- ├── requirements.txt            # (To be implemented at the end) Lists all required Python libraries
+- └── README.md                   # You’re reading it right now silly! 😋
 
 ### 🗂️ Description of Each File
 - `main.py`: 	The entry point of the application. Initializes the camera, loads modules, tracks cursor with the right index fingertip, and detects volume gestures with the left hand.
