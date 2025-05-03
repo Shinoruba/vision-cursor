@@ -16,7 +16,7 @@ Initial Version (1.0):
     - Scroll Up: hand open like a "stop" sign (all fingers extended)
     - Scroll Down: closed fist (all fingers folded)
 
-Last Updated: May 2, 2025
+Last Updated: May 3, 2025
 """
 
 from utils import euclidean_distance, fingers_stretched, fingers_beside_each_other
@@ -29,7 +29,11 @@ class GestureRecognizer:
     """
 
     def __init__(self):
-        # We may expand this class with more gesture types later
+        """
+        I may or may not expand this class with more gesture types later.
+        It entirely depends if I have the time haha lmao xd.
+        Goodluck in CSOPESY Yazan! Thanks Yazan! You are Welcome Yazan!
+        """
         pass
 
     def recognize(self, results):

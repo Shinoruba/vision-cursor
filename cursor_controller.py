@@ -6,11 +6,11 @@ Early Version (1.2):
 - It extracts landmark coordinates from MediaPipe results and maps them to the screen size
   to control the system mouse cursor using pyautogui.   (1.1)
   
-Last Updated: April 30, 2025
+Last Updated: May 3, 2025
 """
 
 import pyautogui  # For controlling the system's mouse cursor
-import cv2 as cv  # Will I needed this for frame size(?)
+import cv2 as cv  # Will I need this for frame size(?)
 import numpy as np  # For scaling and coordinate mapping
 
 screen_width, screen_height = pyautogui.size()  # Get screen size to use as target mapping space
@@ -37,7 +37,7 @@ def move_cursor_from_landmarks(results, frame_shape):
             if hand_label == "Left":
                 hand_landmarks = results.multi_hand_landmarks[idx]
 
-                index_tip = hand_landmarks.landmark[8]  # Index finger tip is landmark #8
+                index_tip = hand_landmarks.landmark[8]  # Personal Note: Index finger tip is landmark #8
 
                 # Convert normalized landmark to pixel coordinates
                 x_px = int(index_tip.x * frame_width)
@@ -51,6 +51,6 @@ def move_cursor_from_landmarks(results, frame_shape):
 
                 pyautogui.moveTo(screen_x, screen_y)
 
-                return (x_px, y_px)  # Use original X for drawing the green circle
+                return (x_px, y_px)  # Use original X for drawing the green circle around my pointy index pointy finger
 
     return None  # No matching hand detected

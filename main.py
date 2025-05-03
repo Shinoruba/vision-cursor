@@ -18,8 +18,8 @@ Last Updated: May 3, 2025
 import cv2 as cv  # OpenCV is used to access and manipulate the webcam feed
 from hand_tracker import HandTracker  # Import HandTracker class
 from cursor_controller import move_cursor_from_landmarks  # Mouse control based on finger position
-from gesture_controller import control_volume_from_gestures  # Volume control using left-hand gestures
-from gesture_recognizer import GestureRecognizer  # NEW: Recognize right-hand gestures
+from gesture_controller import control_volume_from_gestures  # Recognize left-hand gestures for volume control
+from gesture_recognizer import GestureRecognizer  # Recognize left-hand gestures for clicking and scrolling
 from mouse_controller import perform_mouse_action
 
 def main():
