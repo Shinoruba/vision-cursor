@@ -1,7 +1,7 @@
 """
 gesture_recognizer.py
 
-This module is responsible for recognizing right-hand gestures for common mouse actions such as:
+This module is responsible for recognizing left-hand gestures for common mouse actions such as:
 - Left click
 - Double click
 - Right click
@@ -19,37 +19,13 @@ Initial Version (1.0):
 Last Updated: May 2, 2025
 """
 
-import math
+from utils import euclidean_distance, fingers_stretched, fingers_beside_each_other
 
-# =======================================
-# Utility functions
-def euclidean_distance(p1, p2):
-    """Helper function to compute distance between two 3D MediaPipe landmarks."""
-    return math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2)
-
-def fingers_stretched(lm, finger_tips):
-    """Check if specified fingers are stretched out (tip y-coordinate lower than pip joint)"""
-    for tip_idx, pip_idx in [(8, 6), (12, 10), (16, 14), (20, 18)]:  # tip and pip indices for each finger
-        if tip_idx in finger_tips:
-            if lm[tip_idx].y > lm[pip_idx].y:  # if finger is not stretched (tip is higher than pip)
-                return False
-    return True
-
-def fingers_beside_each_other(lm, finger_tips, threshold=0.05):
-    """Check if specified fingers are beside each other (x-coordinates are close)"""
-    tips = [lm[i] for i in finger_tips]
-    for i in range(len(tips)-1):
-        if abs(tips[i].x - tips[i+1].x) > threshold:
-            return False
-    return True
-
-# =======================================
-# Main Class
 class GestureRecognizer:
     """
     GestureRecognizer
     -----------------
-    Classifies gestures made by the RIGHT hand using landmarks detected by MediaPipe Hands.
+    Classifies gestures made by the left hand using landmarks detected by MediaPipe Hands.
     """
 
     def __init__(self):
@@ -58,7 +34,7 @@ class GestureRecognizer:
 
     def recognize(self, results):
         """
-        Recognizes gestures from the RIGHT hand landmarks.
+        Recognizes gestures from the left hand landmarks.
 
         Parameters:
             results: mediapipe.python.solution_base.SolutionOutputs
@@ -107,4 +83,4 @@ class GestureRecognizer:
             if all(not fingers_stretched(lm, [i]) for i in [8, 12, 16, 20]):  # no fingers stretched
                 return "scroll_down"
 
-        return None  # No gesture recognized from right hand
+        return None  # No gesture recognized from left hand
