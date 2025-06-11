@@ -7,8 +7,8 @@ It tracks your finger to move the cursor and recognizes hand gestures for action
 
 - 🖱️ **Cursor Control**: Move your PC mouse cursor simply by moving your index finger.
 - 🤏 **Gesture Recognition**: Trigger click, double-click, and page navigation through hand gestures.
-- ✋ **Dual-Hand Functionality**: Control the cursor with one hand, and adjust the volume/ettings with the other.
-- ⚡ **Real-Time Processing**: Fast and smooth hand tracking using efficient computer vision techniques.
+- ✋ **Dual-Hand Functionality**: Control the cursor with one hand, and adjust the volume/settings with the other.
+- ⚡ **Real-Time Processing**: Smooth hand tracking using efficient computer vision techniques.
 
 ---
 
@@ -42,12 +42,12 @@ Make sure your webcam is connected and active! 📸
 ---
 
 ## 🛠️ Language, Libraries, and Tools Used
-- **Python** 🐍 = Easy to read/interpret language, ideal for computer vision tasks.
-- **MediaPipe** 🎯 = Real-time hand tracking by Google; extremely fast and optimized even for low-end PC systems.
-- **OpenCV** 🖼️ = The leading library for image and video processing; used to access webcam frames and handle image transformations.
-- **PyAutoGUI** 🎮 = Allows the Python script to control the mouse and keyboard seamlessly.
-- **pynput** ⌨️ = An alternative input control library for extended keyboard/mouse actions.
-- **NumPy** 📊 = For efficient numerical operations and matrix transformations.
+- **Python** = Easy to read/interpret language, ideal for computer vision tasks.
+- **MediaPipe** = Real-time hand tracking by Google; extremely fast and optimized even for low-end PC systems.
+- **OpenCV** = The leading library for image and video processing; used to access webcam frames and handle image transformations.
+- **PyAutoGUI** = Allows the Python script to control the mouse and keyboard seamlessly.
+- **pynput** = An alternative input control library for extended keyboard/mouse actions.
+- **NumPy** = For efficient numerical operations and matrix transformations.
 
 These libraries together enable real-time, accurate, and resource-light performance.
 
@@ -88,6 +88,6 @@ This project is licensed under the MIT License, go crazy with it 💀 and by tha
 ## 👨‍💻 Author
 - Name: Yazan M. Homssi
 - GitHub: Shinoruba
-- Professional Email: homssi002@gmail.com
+- Personal Email: homssi002@gmail.com
 - University Email: yazan_homssi@dlsu.edu.ph
 - LinkedIn: https://www.linkedin.com/in/yazan-homssi/
